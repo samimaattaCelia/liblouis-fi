@@ -274,3 +274,55 @@ noback context $d[]$m @0
 # Dashes, not a hyphen. Dashes always have spaces around them.
 noback context !$s["\x2013"]!$s @0-36-0
 noback context !$s["\x2014"]!$s @0-36-0
+
+# Lowercase Greek alphabet
+lowercase α 46-1                 # alpha
+lowercase β 46-12                # beta
+lowercase γ 46-1245              # gamma
+lowercase δ 46-145               # delta
+lowercase ε 46-15                # epsilon
+lowercase ζ 46-1356              # zeta
+lowercase η 46-345               # eta
+lowercase θ 46-1456              # theta
+lowercase ι 46-24                # iota
+lowercase κ 46-13                # kappa
+lowercase λ 46-123               # lambda
+lowercase μ 46-134               # mu
+lowercase ν 46-1345              # nu
+lowercase ξ 46-1346              # xi
+lowercase ο 46-135               # omicron
+lowercase π 46-1234              # pi
+lowercase ρ 46-1235              # rho
+lowercase ς 46-234               # sigma
+lowercase τ 46-2345              # tau
+lowercase υ 46-13456             # upsilon
+lowercase φ 46-124               # fii
+lowercase χ 46-125               # chi
+lowercase ψ 46-12346             # psi
+lowercase ω 46-245               # omega
+
+# Uppercase Greek letter alphabet
+letter	\x0391	456-1	    # Α Capital Alpha
+letter	\x0392	456-12	    # Β Capital Beta
+letter	\x0393	456-1245	# Γ Capital Gamma
+letter	\x0394	456-145	    # Δ Capital Delta
+letter	\x0395	456-15	    # Ε Capital Epsilon
+letter	\x0396	456-1356	# Ζ Capital Zeta
+letter	\x0397	456-345	    # Η Capital Eta
+letter	\x0398	456-1456	# Θ Capital Theta
+letter	\x0399	456-24	    # Ι Capital Iota
+letter	\x039A	456-13	    # Κ Capital Kappa
+letter	\x039B	456-123	    # Λ Capital Lambda
+letter	\x039C	456-134	    # Μ Capital Mu
+letter	\x039D	456-1345	# Ν Capital Nu
+letter	\x039E	456-1346	# Ξ Capital Xi
+letter	\x039F	456-135	    # Ο Capital Omicron
+letter	\x03A0	456-1234	# Π Capital Pi
+letter	\x03A1	456-1235	# Ρ Capital Rho
+letter	\x03A3	456-234	    # Σ Capital Sigma
+letter	\x03A4	456-2345	# Τ Capital Tau
+letter	\x03A5	456-13456	# Υ Capital Upsilon
+letter	\x03A6	456-124	    # Φ Capital Phi
+letter	\x03A7	456-125	    # Χ Capital Chi
+letter	\x03A8	456-13456	# Ψ Capital Psi
+letter	\x03A9	456-245	    # Ω Capital Omega

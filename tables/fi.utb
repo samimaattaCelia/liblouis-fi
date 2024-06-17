@@ -205,6 +205,8 @@ math \x2219 3 ∙ Bullet operator
 math \x22C5 3 ⋅ Dot operator
 math \x00D7 3 × Multiplication sign
 math \x00F7 25 ÷ Division sign; Obelus
+math ± 235-36       # plus minus sign
+math ∓ 36-235       # minus plus sign
 decpoint , 2 Decimal comma
 
 # Vulgar fractions

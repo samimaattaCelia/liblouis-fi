@@ -174,8 +174,8 @@ sign \x20AC 4-15 €
 sign \x00A2 4-14 ¢
 sign * 35
 sign \x00A7 3456 §
-sign _ 346
 sign # 3456
+sign _ 346
 sign ^ 346
 sign \x2022 3 • Bullet sign
 sign \x00B7 3 · Interpunct

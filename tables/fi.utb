@@ -20,7 +20,7 @@
 #-copyright: 2014-2024, Accessibility Library Celia, https://www.celia.fi/en
 #-updated: 2024-06-17
 # 
-# Based on the official documentation "Pistekirjoituksen perusteet" on the website (in Finnish) https://www.pistekirjoitus.fi/julkaisut/pistekirjoituksen-perusteet/ (in Finnish). 
+# Based on the official documentation "Pistekirjoituksen perusteet" on the website (in Finnish) https://www.pistekirjoitus.fi/julkaisut/pistekirjoituksen-perusteet/. 
 # Also based on the mathematical braille on the website "Matematiikan, fysiikan ja kemian pistemerkinnät" and "Matematiikan, fysiikan ja kemian merkinnät elektronisissa oppikirjoissa" (in Finnish) https://www.pistekirjoitus.fi/julkaisut/matematiikka-ja-tietotekniikka/.
 # On GitHub: https://github.com/liblouis/braille-specs/tree/master/finnish.
 #

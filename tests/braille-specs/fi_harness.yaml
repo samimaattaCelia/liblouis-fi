@@ -37,6 +37,9 @@ tests:
   - # Double arrows
     - ⇑ ⇗ ⇒ ⇐
     - ⠌⠌⠱ ⠔⠔⠱ ⠤⠤⠱ ⠣⠤⠤
+  - # Other arrows
+    - ↔ ↦ ↤
+    - ⠣⠤⠱ ⠸⠤⠱ ⠣⠤⠸
   - [17jährig, ⠼⠁⠛⠰⠚⠜⠓⠗⠊⠛] # Small letter sign, p. 37.
   - [<- ->, ⠣⠤ ⠤⠱] # Arrows, p. 47.
   - ['1,50 10,56', ⠼⠁⠂⠑⠚ ⠼⠁⠚⠂⠑⠋] # Decimal *comma*, p. 51.

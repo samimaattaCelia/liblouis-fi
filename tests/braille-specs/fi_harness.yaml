@@ -31,6 +31,9 @@ tests:
   - # Capitalizations, p. 36 - 38.
     - Haluan korostaa HYVÄÄ käytöstä. OPM TV STTK-J eKr. ETLAssa
     - ⠠⠓⠁⠇⠥⠁⠝ ⠅⠕⠗⠕⠎⠞⠁⠁ ⠠⠠⠓⠽⠧⠜⠜ ⠅⠜⠽⠞⠪⠎⠞⠜⠄ ⠠⠠⠕⠏⠍ ⠠⠠⠞⠧ ⠠⠠⠎⠞⠞⠅⠤⠠⠚ ⠑⠠⠅⠗⠄ ⠠⠠⠑⠞⠇⠁⠰⠎⠎⠁
+  - # Simple arrows
+    - ← ↑ ↗ ↙
+    - ⠣⠤ ⠌⠱ ⠔⠱ ⠣⠔ 
   - [17jährig, ⠼⠁⠛⠰⠚⠜⠓⠗⠊⠛] # Small letter sign, p. 37.
   - [<- ->, ⠣⠤ ⠤⠱] # Arrows, p. 47.
   - ['1,50 10,56', ⠼⠁⠂⠑⠚ ⠼⠁⠚⠂⠑⠋] # Decimal *comma*, p. 51.

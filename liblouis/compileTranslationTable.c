@@ -625,6 +625,7 @@ putDots(const FileInfo *file, widechar d, TranslationTableHeader **table, int ru
 
 static CharDotsMapping *
 getDotsForChar(widechar c, const DisplayTableHeader *table) {
+	if (table == NULL) return NULL;
 	CharDotsMapping *cdPtr;
 	const TranslationTableOffset bucket = table->charToDots[_lou_charHash(c)];
 	TranslationTableOffset offset = bucket;
@@ -638,6 +639,7 @@ getDotsForChar(widechar c, const DisplayTableHeader *table) {
 
 static CharDotsMapping *
 getCharForDots(widechar d, const DisplayTableHeader *table) {
+	if (table == NULL) return NULL;
 	CharDotsMapping *cdPtr;
 	const TranslationTableOffset bucket = table->dotsToChar[_lou_charHash(d)];
 	TranslationTableOffset offset = bucket;
@@ -1347,14 +1349,15 @@ parseChars(const FileInfo *file, CharsString *result, CharsString *token) {
 					break;
 				default:
 					compileError(file, "invalid escape sequence '\\%c'", ch);
-					break;
+					result->length = lastOutSize;
+					return 0;
 				}
 				in++;
 			}
 			if (out >= MAXSTRING - 1) {
 				compileError(file, "Token too long");
 				result->length = MAXSTRING - 1;
-				return 1;
+				return 0;
 			}
 			result->chars[out++] = (widechar)ch;
 			continue;
@@ -1369,7 +1372,7 @@ parseChars(const FileInfo *file, CharsString *result, CharsString *token) {
 			if (out >= MAXSTRING - 1) {
 				compileError(file, "Token too long");
 				result->length = lastOutSize;
-				return 1;
+				return 0;
 			}
 			if (token->chars[in] < 128 || (token->chars[in] & 0x0040)) {
 				compileWarning(file, "invalid UTF-8. Assuming Latin-1.");
@@ -1382,7 +1385,7 @@ parseChars(const FileInfo *file, CharsString *result, CharsString *token) {
 		if (out >= MAXSTRING - 1) {
 			compileError(file, "Token too long");
 			result->length = lastOutSize;
-			return 1;
+			return 0;
 		}
 		if (CHARSIZE == 2 && utf32 > 0xffff) utf32 = 0xffff;
 		result->chars[out++] = (widechar)utf32;
@@ -1400,11 +1403,7 @@ _lou_extParseChars(const char *inString, widechar *outString) {
 	for (k = 0; inString[k] && k < MAXSTRING - 1; k++) wideIn.chars[k] = inString[k];
 	wideIn.chars[k] = 0;
 	wideIn.length = k;
-	parseChars(NULL, &result, &wideIn);
-	if (errorCount) {
-		errorCount = 0;
-		return 0;
-	}
+	if (!parseChars(NULL, &result, &wideIn)) return 0;
 	for (k = 0; k < result.length; k++) outString[k] = result.chars[k];
 	return result.length;
 }
@@ -4566,7 +4565,7 @@ compileString(const char *inString, TranslationTableHeader **table,
 	file.lineNumber = 1;
 	file.status = 0;
 	file.linepos = 0;
-	for (k = 0; inString[k]; k++) file.line[k] = inString[k];
+	for (k = 0; k < MAXSTRING - 1 && inString[k]; k++) file.line[k] = inString[k];
 	file.line[k] = 0;
 	file.linelen = k;
 	if (table && *table && (*table)->finalized) {
@@ -5065,8 +5064,8 @@ void EXPORT_CALL
 _lou_getTable(const char *tableList, const char *displayTableList,
 		const TranslationTableHeader **translationTable,
 		const DisplayTableHeader **displayTable) {
-	TranslationTableHeader *newTable;
-	DisplayTableHeader *newDisplayTable;
+	TranslationTableHeader *newTable = NULL;
+	DisplayTableHeader *newDisplayTable = NULL;
 	getTable(tableList, displayTableList, &newTable, &newDisplayTable);
 	if (newTable)
 		if (!finalizeTable(newTable)) newTable = NULL;
@@ -5077,8 +5076,8 @@ _lou_getTable(const char *tableList, const char *displayTableList,
 /* Checks and loads tableList. */
 const void *EXPORT_CALL
 lou_getTable(const char *tableList) {
-	const TranslationTableHeader *table;
-	const DisplayTableHeader *displayTable;
+	const TranslationTableHeader *table = NULL;
+	const DisplayTableHeader *displayTable = NULL;
 	_lou_getTable(tableList, tableList, &table, &displayTable);
 	if (!table || !displayTable) return NULL;
 	return table;
@@ -5086,7 +5085,7 @@ lou_getTable(const char *tableList) {
 
 const TranslationTableHeader *EXPORT_CALL
 _lou_getTranslationTable(const char *tableList) {
-	TranslationTableHeader *table;
+	TranslationTableHeader *table = NULL;
 	getTable(tableList, NULL, &table, NULL);
 	if (table)
 		if (!finalizeTable(table)) table = NULL;
@@ -5095,7 +5094,7 @@ _lou_getTranslationTable(const char *tableList) {
 
 const DisplayTableHeader *EXPORT_CALL
 _lou_getDisplayTable(const char *tableList) {
-	DisplayTableHeader *table;
+	DisplayTableHeader *table = NULL;
 	getTable(NULL, tableList, NULL, &table);
 	return table;
 }
